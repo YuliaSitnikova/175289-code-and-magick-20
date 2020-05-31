@@ -183,12 +183,8 @@
 
 <script>
   var fireballSize = 22;
-  var getFireballSpeed = function (isHeadWind) {
-    if (!isHeadWind) {
-      return 5;
-    }
-
-    return 2;
+  var getFireballSpeed = function (movingLeft) {
+    return movingLeft ? 2 : 5;
   };
   var wizardSpeed = 3;
   var wizardWidth = 70;
