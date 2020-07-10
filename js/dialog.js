@@ -60,10 +60,8 @@
         x: startCoords.x - moveEvt.clientX,
         y: startCoords.y - moveEvt.clientY
       };
-      if (shift.x !== 0 && shift.y !== 0) {
-        if (!dragged) {
-          dragged = true;
-        }
+      if (shift.x !== 0 || shift.y !== 0) {
+        dragged = true;
         startCoords = {
           x: moveEvt.clientX,
           y: moveEvt.clientY,
@@ -73,7 +71,7 @@
       }
     };
 
-    var onMouseUp = function (moveUp) {
+    var onMouseUp = function () {
       if (dragged) {
         var onDraggedHandleClick = function (clickEvt) {
           clickEvt.preventDefault();
