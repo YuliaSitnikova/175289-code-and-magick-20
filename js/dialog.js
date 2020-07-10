@@ -49,32 +49,31 @@
   });
 
   dialogHandle.addEventListener('mousedown', function (evt) {
-    evt.preventDefault();
-
+    var dragged = false;
     var startCoords = {
       x: evt.clientX,
       y: evt.clientY,
     };
 
-    var dragged = false;
-
     var onMouseMove = function (moveEvt) {
-      moveEvt.preventDefault();
-      dragged = true;
       var shift = {
         x: startCoords.x - moveEvt.clientX,
         y: startCoords.y - moveEvt.clientY
       };
-      startCoords = {
-        x: moveEvt.clientX,
-        y: moveEvt.clientY,
-      };
-      dialog.style.top = (dialog.offsetTop - shift.y) + 'px';
-      dialog.style.left = (dialog.offsetLeft - shift.x) + 'px';
+      if (shift.x !== 0 && shift.y !== 0) {
+        if (!dragged) {
+          dragged = true;
+        }
+        startCoords = {
+          x: moveEvt.clientX,
+          y: moveEvt.clientY,
+        };
+        dialog.style.top = (dialog.offsetTop - shift.y) + 'px';
+        dialog.style.left = (dialog.offsetLeft - shift.x) + 'px';
+      }
     };
 
     var onMouseUp = function (moveUp) {
-      moveUp.preventDefault();
       if (dragged) {
         var onDraggedHandleClick = function (clickEvt) {
           clickEvt.preventDefault();
