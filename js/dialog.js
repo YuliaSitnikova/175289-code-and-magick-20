@@ -5,7 +5,6 @@
   var dialogOpenButton = document.querySelector('.setup-open');
   var dialogCloseButton = dialog.querySelector('.setup-close');
   var dialogHandle = dialog.querySelector('.upload');
-  var dialogSimilar = document.querySelector('.setup-similar');
   var dialogUserName = dialog.querySelector('.setup-user-name');
 
   var onDialogEscPress = function (evt) {
@@ -17,13 +16,11 @@
 
   var showDialog = function () {
     dialog.classList.remove('hidden');
-    dialogSimilar.classList.remove('hidden');
     document.addEventListener('keydown', onDialogEscPress);
   };
 
   var hideDialog = function () {
     dialog.classList.add('hidden');
-    dialogSimilar.classList.add('hidden');
     document.removeEventListener('keydown', onDialogEscPress);
     dialog.removeAttribute('style');
   };
@@ -86,4 +83,8 @@
     document.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseup', onMouseUp);
   });
+
+  window.dialog = {
+    hide: hideDialog
+  };
 })();
