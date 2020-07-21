@@ -2,14 +2,14 @@
 
 (function () {
   var TIMEOUT = 10000;
-  var statusCode = {
+  var StatusCode = {
     OK: 200,
   };
 
   var createXHR = function (url, method, data, onLoad, onError) {
     var xhr = new XMLHttpRequest();
     xhr.addEventListener('load', function () {
-      if (xhr.status === statusCode.OK) {
+      if (xhr.status === StatusCode.OK) {
         onLoad(xhr.response);
       } else {
         onError('Статус ответа: ' + xhr.status + ' ' + xhr.statusText);
